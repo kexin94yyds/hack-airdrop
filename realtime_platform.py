@@ -463,7 +463,8 @@ if __name__ == '__main__':
     print("-" * 50)
     
     # 启动 Flask 应用
-    app.run(debug=False, host='0.0.0.0', port=9000)
+    port = int(os.environ.get('PORT', 9000))
+    app.run(debug=False, host='0.0.0.0', port=port)
 else:
     # Vercel 部署时初始化
     init_scraper()
