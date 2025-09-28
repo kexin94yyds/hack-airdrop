@@ -52,8 +52,11 @@ logs/
 Thumbs.db
 
 # Twitter data
-*.json
 accounts.txt
+
+# Keep deployment configs
+!railway.json
+!vercel.json
 
 # Temporary files
 *.tmp
