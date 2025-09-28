@@ -436,10 +436,18 @@ def background_updater():
         
         time.sleep(UPDATE_INTERVAL)
 
-if __name__ == '__main__':
+# 初始化全局变量
+scraper = RealtimeAirdropScraper()
+
+def init_scraper():
+    global scraper
     # 启动后台更新线程
     update_thread = threading.Thread(target=background_updater, daemon=True)
     update_thread.start()
+
+if __name__ == '__main__':
+    # 初始化爬虫
+    init_scraper()
     
     print("🚀 Binance 空投信息平台启动中...")
     print("📊 功能特性:")
@@ -456,3 +464,6 @@ if __name__ == '__main__':
     
     # 启动 Flask 应用
     app.run(debug=False, host='0.0.0.0', port=9000)
+else:
+    # Vercel 部署时初始化
+    init_scraper()
